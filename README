@@ -1,0 +1,10 @@
+This is an authentication module for simpleSAMLphp to authenticate against LinOTP.
+
+First you need to get simpleSAMLphp. (http://www.simplesamlphp.org)
+
+Then you'll want to read about the authentication modules ->
+	http://simplesamlphp.org/docs/1.8/simplesamlphp-idp#section_2
+
+Drop the LinOTP authentication module in place and configure as described in the authentication module section.
+
+contact: linotp-community@lsexperts.de

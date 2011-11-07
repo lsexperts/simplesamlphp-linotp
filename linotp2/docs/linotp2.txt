@@ -1,0 +1,69 @@
+LinOTP2 module
+==============
+
+This module provides a single authentication module for simpleSAMLphp to talk
+to LinOTP2.
+
+`linotp2:linotp2`
+: Authenticate a user against a LinOTP2 server.
+
+This module contacts the LinOTP2 server via the API
+https://linotp2server/validate/check
+and authenticates the user according to the token assigned to the user.
+
+The response can also contain some attributes.
+
+To enable this module, create a file 'enable' in the
+directorpy 'modules/linotp/'.
+Then you need to add the authentication source 'linotp2:linotp2' to
+'config/authsources.php'. Do it like this:
+
+    'example-linotp2' => array(
+        'linotp2:linotp2',
+
+        /*
+         * The name of the LinOTP server and the protocol
+	     * A port can be added by a :
+         * Required.
+         */
+        'linotpserver' => 'https://your.server.com',
+
+        /*
+         * Check if the hostname matches the name in the certificate
+         * Optional.
+         */
+        'sslverifyhost' => False,
+
+        /*
+         * Check if the certificate is valid, signed by a trusted CA
+         * Optional.
+         */
+        'sslverifypeer' => False,
+        
+        /*
+         * The realm where the user is located in.
+         * Optional.
+         */
+        'realm' => '',
+        
+        /*
+         * This is the translation from LinOTP attribute names to 
+         * SAML attribute names. If given, the LinOTP attribute name
+         * will be renamed accordingly 
+         * Optional
+         */
+         'attributemap' => array(
+         				'username' => 'samlLoginName',
+         				'surname' => 'surName',
+         				'givenname' => 'givenName',
+         				'email' => 'emailAddress',
+         				'phone' => 'telePhone',
+         				'mobile' => 'mobilePhone',
+         				),
+
+    ),
+
+
+User attributes
+---------------
+
